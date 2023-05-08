@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container border" >
+    <div class="row">
+        <div class="col-sm-12 col-md-8 col-lg-5">
+            <img class="ml-4 img_confirm" src="{{product.image.url}}">
+
+        </div>
+        <div class="col-sm-12 col-md-4 col-lg-7 text-center" >
+            <h1>{{product.name}}</h1>
+            <h3> &#x20B9; {{product.price}}</h3>
+            <span class="text-muted">{{product.desc}}</span>
+
+            <form action="{% url 'checkout' %}" method="post">
+                {% csrf_token %}
+                <input hidden name="productid" type="text" value="{{product.id}}">
+                <br><input hidden name="email" type="text" value="{{customer.emailaddress}}">
+                <br><input hidden name="quantity" type="text" value="1">
+                <br>
+                <button class="btn btn-success" type="submit"> Checkout</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!--{% if method == "add_to_cart" %}-->
+<!--{% for item in cart %}-->
+<!--{{item.product.name}}-->
+<!--{% endfor %}-->
+<!--<a href="{% url 'checkout' %}">Confirm Order</a>-->
+<!--{% else %}-->
+<!--<form action="{% url 'checkout' %}" method="post">-->
+<!--    {% csrf_token %}-->
+<!--    <input hidden name="productid" type="text" value="{{product.id}}">-->
+<!--    <br><input hidden name="email" type="text" value="{{customer.emailaddress}}">-->
+<!--    <br><input name="price" type="text" value="{{product.price}}">-->
+<!--    <br><input hidden name="quantity" type="text" value="1">-->
+<!--    <br>-->
+<!--    <button class="btn btn-success" type="submit"> Checkout</button>-->
+<!--</form>-->
+
+<!--{% endif %}-->
+<!--{% endblock %}-->

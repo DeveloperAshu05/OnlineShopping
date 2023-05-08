@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sheet.css' %}">
+    <link href="/static/images/logo.png" rel="icon" width="70px" height="70px"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+<div class="container-fluid">
+    <!-- outer start -->
+    {% include 'navbar.html' %}
+
+    {% block content %}
+    {% endblock %}
+</div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Checkout</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+</head>
+
+<body>
+		<div class="col-md-4 container bg-default">
+			
+			<h4 class="my-4">
+					Delivery Address
+			</h4>
+			
+			<form action="{% url 'thank' %}" >
+				<div class="form-row">
+					<div class="col-md-6 form-group">
+						<label for="firstname">First Name</label>
+						<input type="text" class="form-control" id="firstname" placeholder="First Name">
+						<div class="invalid-feedback">
+							Valid first name is required.
+						</div>
+					</div>
+
+					<div class="col-md-6 form-group">
+						<label for="lastname">Last Name</label>
+						<input type="text" class="form-control" id="lastname" placeholder="Last Name">
+						<div class="invalid-feedback">
+							Valid last name is required.
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="username">Username</label>
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text">@</span>
+							</div>	
+							<input type="text" class="form-control" id="username" placeholder="Username" required>
+							<div class="invalid-feedback">
+								Your username is required.
+							</div>
+						</div>
+				</div>
+
+				<div class="form-group">
+						<label for="email">Email</label>
+						<input type="email" class="form-control" id="email" placeholder="you@example.com" required>
+				</div>
+
+				<div class="form-group">
+					<label for="adress">Billing Address</label>
+					<textarea type="text" class="form-control" id="adress" placeholder="type your billing address" required></textarea>
+					<div class="invalid-feedback">
+						Please enter your Billing address.
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="adress">Shipping address</label>
+					<textarea type="text" class="form-control" id="adress" placeholder="type your shipping address" required></textarea>
+					<div class="invalid-feedback">
+						Please enter your Shipping address.
+					</div>
+
+				
+
+				<div class="row">
+					<div class="col-md-4 form-group">
+						<label for="country">City</label>
+						<select type="text" class="form-control" id="country">
+							<option value>Choose your State</option>
+							<option>Uttar pradesh</option>
+							<option>Bihar</option>
+							<option>Delhi</option>
+							<option>Haryana</option>
+							<option>Rajsthan</option>
+							<option>Gujrat</option>
+							<option>Maharastra</option>
+							<option>Madhya pradesh</option>
+							<option>Sikkim</option>
+							<option>Asam</option>
+							<option>West Bengal</option>
+							<option>Orisha</option>
+							<option>Andhra Pradesh</option>
+						</select>
+						<div class="invalid-feedback">
+							Please select a valid State.
+						</div>
+					</div>
+
+					<div class="col-md-4 form-group">
+						<label for="city">Country</label>
+						<select type="text" class="form-control" id="city">
+							<option value>Choose your Country</option>
+							<option>India</option>
+							<option>Nepal</option>
+						</select>
+						<div class="invalid-feedback">
+							Please provide a valid country.
+						</div>
+					</div>
+						
+					<div class="col-md-4 form-group">
+						<label for="pincode">Pincode</label>
+						<input type="num" name="pincode" />
+						
+						<div class="invalid-feedback">
+							Postcode required.
+						</div>
+					</div>
+				</div>
+
+				<hr>
+				
+				<div class="form-check">
+					<input type="checkbox" class="form-check-input" id="shipping-adress"> 
+						Shipping address is the same as my billing address
+					<label for="shipping-adress" class="form-check-label"></label>
+				</div>
+
+				<div class="form-check">
+					<input type="checkbox" class="form-check-input" id="same-adress">
+						Save this information for next time
+					<label for="same-adress" class="form-check-label"></label>					
+					</div>
+
+				<hr>
+
+				<h4 class="mb-4">Payment</h4>
+				
+				<div class="form-check">
+					<input type="radio" class="form-check-input" id="credit" name="payment-method" checked required>
+					<label for="credit" class="form-check-label">Credit Card</label>
+				</div>
+
+				<div class="form-check">
+					<input type="radio" class="form-check-input" id="debit" name="payment-method" required>
+					<label for="debit" class="form-check-label">Debit Card</label>
+				</div>
+
+				<div class="form-check">
+					<input type="radio" class="form-check-input" id="paypal" name="payment-method"  required>
+					<label for="paypal" class="form-check-label">PayPal</label>
+				</div>
+			
+				<div class="row mt-4">
+					<div class="col-md-6 form-group">
+							<label for="card-name">Name on card</label>
+							<input type="text" class="form-control" id="card-name" placeholder required>
+							<div class="invalid-feedback">
+								Name on card is required
+							</div>
+						</div>
+
+						<div class="col-md-6 form-group">
+							<label for="card-no">Card Number</label>
+							<input type="text" class="form-control" id="card-no" placeholder required>
+							<div class="invalid-feedback">
+								Credit card number is required
+							</div>
+						</div>
+				</div>
+
+				<div class="form-row">
+					<div class="col-md-5 form-group">
+							<label for="expiration">Expire Date</label>
+							<input type="text" class="form-control" id="card-name1" placeholder required>
+							<div class="invalid-feedback">
+								Expiration date required
+							</div>
+						</div>
+					
+
+					<div class="col-md-5 form-group">
+							<label for="ccv-no">Security Number</label>
+							<input type="text" class="form-control" id="sec-no" placeholder required>
+							<div class="invalid-feedback">
+								Security code required
+							</div>
+					</div>
+				</div>
+
+					<hr class="mb-4">
+				
+					<input type="submit" class="btn btn-success" >
+			</form>
+		</div>
+</body>
+</html>

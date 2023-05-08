@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Thank you page {% endblock %}
+
+{% block content %}
+<div class="container-fluid d-flex align-items-center w-100 justify-content-center">
+    <div class="row im text-center text-info" style="width:600px; ">
+        <img src="{% static 'images/success.gif' %}" style="height: 51vh; width:100%;margin:auto;size:backgoround-position:100%"/>
+        <h1>YOUR ORDER SUCCESSFULLY PLACED</h1>
+        <a href="{% url 'index' %}"><button type="button" class="bt mt-3">GO TO HOME</button></a>
+    </div>
+</div>
+{% endblock %}
